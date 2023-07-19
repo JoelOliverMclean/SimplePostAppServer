@@ -6,8 +6,11 @@ const cookieParser = require("cookie-parser")
 const { expressjwt: jwt } = require("express-jwt")
 const csrf = require("csurf")
 
+const path = __dirname + '/app/views/'
+
 const db = require("./models")
 
+app.use(express.static(path))
 app.use(cors())
 
 app.use(express.json())
@@ -19,6 +22,10 @@ app.use(csrfProtection)
 app.get('/csrf-token', (req, res) => {
     res.json({ csrfToken: req.csrfToken() });
 });
+
+app.get('/', (req, res) => {
+    res.sendFile(path + "index.html")
+})
 
 //Routers
 const postRouter = require('./routes/Posts')
