@@ -6,7 +6,7 @@ const cookieParser = require("cookie-parser")
 const { expressjwt: jwt } = require("express-jwt")
 const csrf = require("csurf")
 
-const path = __dirname + '/app/views/'
+const path = __dirname + '/views/'
 
 const db = require("./models")
 
